@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF Frame Ripper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="content">
+
+  <header>
+    <div class="tag">v2.0 — Zero Dependencies — Client Side Only</div>
+    <div class="logo">GIF<span>.</span>RIPPER</div>
+    <div class="subtitle">Extract &amp; Rename GIF Frames — ttm1 through ttm1000000000+</div>
+  </header>
+
+  <!-- Drop Zone -->
+  <div class="panel">
+    <div class="panel-label">// Input — Drop GIF Files</div>
+    <div id="dropzone">
+      <span class="drop-icon">🎞</span>
+      <div class="drop-main">Drop GIFs Here</div>
+      <div class="drop-sub">or click to browse &mdash; .gif files only &mdash; multiple supported</div>
+    </div>
+    <input type="file" id="fileInput" multiple accept=".gif,image/gif">
+    <div class="err-msg" id="errMsg"></div>
+  </div>
+
+  <!-- Config -->
+  <div class="panel">
+    <div class="panel-label">// Config</div>
+    <div class="config-row">
+      <div class="field">
+        <label>Prefix</label>
+        <input type="text" id="prefix" value="ttm" maxlength="30">
+        <div class="hint">Output: prefix + number (ttm1, ttm2 …)</div>
+      </div>
+      <div class="field">
+        <label>Start Index</label>
+        <input type="number" id="startIndex" value="1" min="0">
+        <div class="hint">Counter starts here, increments across all GIFs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Queue -->
+  <div class="panel" id="queuePanel" style="display:none">
+    <div class="panel-label">
+      // Queue
+      <button class="clear-btn" id="clearBtn">✕ Clear All</button>
+    </div>
+    <ul id="queue"></ul>
+    <div id="progressWrap">
+      <div class="prog-bar-track">
+        <div class="prog-bar-fill" id="progFill"></div>
+      </div>
+      <div class="prog-label" id="progLabel">Ready</div>
+    </div>
+  </div>
+
+  <button id="runBtn" disabled>⚡ Extract &amp; Rename Frames</button>
+
+  <!-- Output -->
+  <div class="panel" id="outputWrap">
+    <div class="panel-label">// Output Frames</div>
+    <div class="out-grid" id="outGrid"></div>
+    <div class="stat-row" id="statRow"></div>
+    <button class="dl-all-btn" id="dlAllBtn">⬇ Download All Frames as ZIP</button>
+  </div>
+
+</div>
+<footer>All processing done in your browser — no uploads, no servers</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
